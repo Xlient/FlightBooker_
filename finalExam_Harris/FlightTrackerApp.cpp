@@ -2,6 +2,10 @@
 #include<Windows.h>
 #include<string>
 #include<fstream>
+#include<chrono>
+#include<random>
+#include<ctime>
+#include"Flight.h"
 using namespace std;
 struct UserInfo
 {
@@ -19,12 +23,18 @@ void getUserInput(HANDLE, UserInfo&);
 void displayUserInput(HANDLE, UserInfo);
 void saveData(UserInfo);
 
+/*Unfinished*/
 int main() {
+	/*
+	*/
+	unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
+	default_random_engine rand(seed);
 	UserInfo Input;
 
 	HANDLE Screen = GetStdHandle(STD_OUTPUT_HANDLE);
 	displayPrompts(Screen);
 	getUserInput(Screen, Input);
+	Flight f1(rand);
 	system("pause");
 
 }
